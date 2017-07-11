@@ -14,7 +14,8 @@ const int SUCCESS = 0;
 const string SERVER_HOST = "127.0.0.1";
 const string SERVER_PORT = "4040";
 const int RESPONSE_MAX_LENGTH = 215;
-const int NUMBER_OF_REQUESTS = 100;
+const int NUMBER_OF_REQUESTS_IN_PARALLEL = 100;
+const int NUMBER_OF_TIMES = 5;
 
 const string request = "<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?><msg><header id_trans=\"1111\" app=\"xml\" user=\"ussd\" passw=\"ussd\" action=\"1\"/><req><op>req_comp_promo</op><msisdn>56999694444</msisdn><idPromo>BO_80MB_2D</idPromo></req></msg>";
 
@@ -40,14 +41,11 @@ void execute_request() {
 int main() {
     cout << "Load generator initializing ..." << endl;
 
-    vector<thread> v;
     try {
-        for(int i=0; i<NUMBER_OF_REQUESTS; ++i) {
-            v.emplace_back(execute_request);
-        }
-
-        for (auto& t : v) {
-            t.join();
+        for(int i=0; i<NUMBER_OF_TIMES; ++i) {
+            vector<thread> v;
+            for(int j=0; j<NUMBER_OF_REQUESTS_IN_PARALLEL; ++j) { v.emplace_back(execute_request); }
+            for (auto& t : v) { t.join(); }
         }
     }
     catch(std::exception& e){
