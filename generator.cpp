@@ -21,6 +21,7 @@ const string request = "<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?><msg><hea
 
 
 void execute_request() {
+    //TODO:timing this.....
     boost::asio::io_service io_service;
 
     tcp::socket s(io_service);
