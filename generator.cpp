@@ -11,6 +11,7 @@ using boost::asio::ip::tcp;
 const int SUCCESS = 0;
 const string SERVER_HOST = "127.0.0.1";
 const string SERVER_PORT = "4040";
+const int RESPONSE_MAX_LENGTH = 215;
 
 const string request = "<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?><msg><header id_trans=\"1111\" app=\"xml\" user=\"ussd\" passw=\"ussd\" action=\"1\"/><req><op>req_comp_promo</op><msisdn>56999694444</msisdn><idPromo>BO_80MB_2D</idPromo></req></msg>";
 
@@ -27,11 +28,11 @@ int main() {
 
         boost::asio::write(s, boost::asio::buffer(request, request.size()));
 
-        char reply[1000];
-        size_t reply_length = boost::asio::read(s, boost::asio::buffer(reply, 1000));
+        char reply[RESPONSE_MAX_LENGTH];
+        size_t reply_length = boost::asio::read(s, boost::asio::buffer(reply, RESPONSE_MAX_LENGTH));
 
         cout << "Reply is: ";
-        cout.write(reply, 1000);
+        cout.write(reply, reply_length);
         cout << "\n";
     }
     catch(std::exception& e){
