@@ -2,6 +2,8 @@
 
 #include <boost/asio.hpp>
 
+#include <thread>
+#include <vector>
 #include <string>
 #include <iostream>
 
@@ -32,14 +34,20 @@ void execute_request() {
     cout << "Reply is: ";
     cout.write(response, response_length);
     cout << "\n";
+
 }
 
 int main() {
     cout << "Load generator initializing ..." << endl;
 
+    vector<thread> v;
     try {
         for(int i=0; i<NUMBER_OF_REQUESTS; ++i) {
-            execute_request();
+            v.emplace_back(execute_request);
+        }
+
+        for (auto& t : v) {
+            t.join();
         }
     }
     catch(std::exception& e){
