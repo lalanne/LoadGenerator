@@ -28,11 +28,11 @@ int main() {
 
         boost::asio::write(s, boost::asio::buffer(request, request.size()));
 
-        char reply[RESPONSE_MAX_LENGTH];
-        size_t reply_length = boost::asio::read(s, boost::asio::buffer(reply, RESPONSE_MAX_LENGTH));
+        char response[RESPONSE_MAX_LENGTH];
+        size_t response_length = boost::asio::read(s, boost::asio::buffer(response, RESPONSE_MAX_LENGTH));
 
         cout << "Reply is: ";
-        cout.write(reply, reply_length);
+        cout.write(response, response_length);
         cout << "\n";
     }
     catch(std::exception& e){
