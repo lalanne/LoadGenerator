@@ -6,6 +6,6 @@ project (LoadGenerator)
 
 #target_include_directories (Hello PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 add_executable (load_generator generator.cpp)
-#target_link_libraries (server boost_system)
+target_link_libraries (load_generator boost_system)
 
 
