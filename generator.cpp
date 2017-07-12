@@ -3,6 +3,7 @@
 #include <boost/asio.hpp>
 
 #include <future>
+#include <utility>
 #include <chrono>
 #include <vector>
 #include <string>
@@ -21,7 +22,7 @@ const int NUMBER_OF_TIMES = 1;
 const string request = "<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?><msg><header id_trans=\"1111\" app=\"xml\" user=\"ussd\" passw=\"ussd\" action=\"1\"/><req><op>req_comp_promo</op><msisdn>56999694444</msisdn><idPromo>BO_80MB_2D</idPromo></req></msg>";
 
 
-string request_response(const int index) {
+pair<string, double> request_response(const int index) {
     auto start = chrono::steady_clock::now();
 
     boost::asio::io_service io_service;
@@ -38,11 +39,9 @@ string request_response(const int index) {
     auto end = chrono::steady_clock::now();
     auto diff = end-start;
 
-    cout << chrono::duration <double, milli> (diff).count() << " [ms]" << endl;
+    //cout << chrono::duration <double, milli> (diff).count() << " [ms]" << endl;
     //cout << chrono::duration <double, nano> (diff).count() << " ns" << endl;
-
-
-    return string(response);
+    return make_pair(string(response), chrono::duration <double, milli> (diff).count());
 }
 
 int main() {
@@ -50,9 +49,12 @@ int main() {
 
     try {
         for(int i=0; i<NUMBER_OF_TIMES; ++i) {
-            vector<future<string>> futures;
+            vector<future<pair<string, double>>> futures;
             for(int j=0; j<NUMBER_OF_REQUESTS_IN_PARALLEL; ++j) { futures.push_back(async(request_response, j)); }
-            for (auto& ft : futures) { cout << ft.get() << endl; }
+
+            vector<pair<string, double>> results;
+            for (auto& ft : futures) { results.push_back(ft.get()); }
+            for (auto& rs : results) { cout << "result[" << get<0>(rs) << "] latency[" << get<1>(rs) << "]" << endl; }
         }
     }
     catch(std::exception& e){
