@@ -44,18 +44,47 @@ pair<string, double> request_response(const int index) {
     return make_pair(string(response), chrono::duration <double, milli> (diff).count());
 }
 
+
+class Results {
+    public:
+        Results(const int times, const int parallel_request) : results(times) {}
+
+        void add(const int time, pair<string, double> result) {
+            results[time].push_back(result);
+        }
+
+        void show() const {
+            cout << "************************************** times[" << results.size() << "] **********************************" << endl;
+            for (auto& time : results) { 
+                cout << "************************************** results[" << time.size() << "] **********************************" << endl;
+                for(auto& result : time) {
+                    cout << "result[" << get<0>(result) << "] latency[" << get<1>(result) << "]" << endl; 
+                }
+            }
+        }
+
+    private:
+        vector<vector<pair<string, double>>> results;
+
+};
+
+
 int main() {
     cout << "Load generator initializing ..." << endl;
 
+    Results results(NUMBER_OF_TIMES, NUMBER_OF_REQUESTS_IN_PARALLEL);
+
     try {
-        for(int i=0; i<NUMBER_OF_TIMES; ++i) {
+        for(int time=0; time<NUMBER_OF_TIMES; ++time) {
+
             vector<future<pair<string, double>>> futures;
             for(int j=0; j<NUMBER_OF_REQUESTS_IN_PARALLEL; ++j) { futures.push_back(async(request_response, j)); }
 
-            vector<pair<string, double>> results;
-            for (auto& ft : futures) { results.push_back(ft.get()); }
-            for (auto& rs : results) { cout << "result[" << get<0>(rs) << "] latency[" << get<1>(rs) << "]" << endl; }
+            for (auto& ft : futures) { results.add(time, ft.get()); }
+
         }
+       
+        results.show();
     }
     catch(std::exception& e){
         std::cerr << "Exception: " << e.what() << "\n";
