@@ -1,5 +1,7 @@
 
 
+#include "Results.hpp"
+
 #include <boost/asio.hpp>
 
 #include <future>
@@ -43,30 +45,6 @@ pair<string, double> request_response(const int index) {
     //cout << chrono::duration <double, nano> (diff).count() << " ns" << endl;
     return make_pair(string(response), chrono::duration <double, milli> (diff).count());
 }
-
-
-class Results {
-    public:
-        Results(const int times, const int parallel_request) : results(times) {}
-
-        void add(const int time, pair<string, double> result) {
-            results[time].push_back(result);
-        }
-
-        void show() const {
-            cout << "************************************** times[" << results.size() << "] **********************************" << endl;
-            for (auto& time : results) { 
-                cout << "************************************** results[" << time.size() << "] **********************************" << endl;
-                for(auto& result : time) {
-                    cout << "result[" << get<0>(result) << "] latency[" << get<1>(result) << "]" << endl; 
-                }
-            }
-        }
-
-    private:
-        vector<vector<pair<string, double>>> results;
-
-};
 
 
 int main() {

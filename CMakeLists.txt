@@ -5,7 +5,7 @@ project (LoadGenerator)
 #add_subdirectory (Demo)
 
 #target_include_directories (Hello PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
-add_executable (load_generator generator.cpp)
+add_executable (load_generator generator.cpp Results.cpp)
 target_link_libraries (load_generator boost_system pthread)
 
 
