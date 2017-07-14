@@ -41,8 +41,6 @@ pair<string, double> request_response(const int index) {
     auto end = chrono::steady_clock::now();
     auto diff = end-start;
 
-    //cout << chrono::duration <double, milli> (diff).count() << " [ms]" << endl;
-    //cout << chrono::duration <double, nano> (diff).count() << " ns" << endl;
     return make_pair(string(response), chrono::duration <double, milli> (diff).count());
 }
 
