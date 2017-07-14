@@ -8,9 +8,9 @@
 
 class Results {
     public:
-        Results(const int times, const int parallel_request);
+        Results(const unsigned int times, const unsigned int parallel_requests);
 
-        void add(const int time, std::pair<std::string, double> result);
+        void add(const unsigned int time, std::pair<std::string, double> result);
         void show() const;
 
     private:

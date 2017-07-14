@@ -5,10 +5,10 @@
 
 using namespace std;
 
-Results::Results(const int times, const int parallel_request) : results(times) {}
+Results::Results(const unsigned int times, const unsigned int parallel_request) : results(times) {}
 
 
-void Results::add(const int time, pair<string, double> result) {
+void Results::add(const unsigned int time, pair<string, double> result) {
     results[time].push_back(result);
 }
 
