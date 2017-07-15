@@ -19,7 +19,9 @@ int main(int argc, char *argv[]) {
     unsigned int NUMBER_OF_TIMES = 0;
 
     if(argc != 3) {
-        cerr << "load_generator <# requests in parallel> <# times>" << endl;
+        cerr << "usage:\tload_generator <n> <t>" << endl;
+        cerr << "n\tNumber of requests in parallel" << endl;
+        cerr << "t\tNumber of times <n> will be executed" << endl;
         return FAIL;
     }
     else {
