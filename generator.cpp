@@ -11,13 +11,21 @@
 
 using namespace std;
 
-const int SUCCESS = 0;
+const int SUCCESS   = 0;
+const int FAIL      = -1;
 
-const int NUMBER_OF_REQUESTS_IN_PARALLEL = 100;
-const int NUMBER_OF_TIMES = 1;
+int main(int argc, char *argv[]) {
+    unsigned int NUMBER_OF_REQUESTS_IN_PARALLEL = 0;
+    unsigned int NUMBER_OF_TIMES = 0;
 
-int main() {
-    cout << "Load generator initializing ..." << endl;
+    if(argc != 3) {
+        cerr << "load_generator <# requests in parallel> <# times>" << endl;
+        return FAIL;
+    }
+    else {
+        NUMBER_OF_REQUESTS_IN_PARALLEL = stoi(argv[1]);
+        NUMBER_OF_TIMES = stoi(argv[2]);
+    }
 
     Results results(NUMBER_OF_TIMES, NUMBER_OF_REQUESTS_IN_PARALLEL);
 
