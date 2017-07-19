@@ -3,6 +3,7 @@
 #include "Results.hpp"
 #include "policies.hpp"
 #include "Arguments.hpp"
+#include "Requests.hpp"
 
 #include <future>
 #include <utility>
@@ -20,13 +21,15 @@ int main(int argc, char *argv[]) {
     if(arguments.are_valid()) {
         arguments.save();
         Results results(arguments.NUMBER_OF_TIMES, arguments.NUMBER_OF_REQUESTS_IN_PARALLEL);
+        Requests requests(arguments.REQUESTS_FILE);
+        requests.load();
 
         try {
             for(int time=0; time<arguments.NUMBER_OF_TIMES; ++time) {
 
                 vector<future<pair<string, double>>> futures;
                 for(int j=0; j<arguments.NUMBER_OF_REQUESTS_IN_PARALLEL; ++j) { 
-                    futures.push_back(async(launch::async, request_response, j)); 
+                    futures.push_back(async(launch::async, request_response, j, std::ref(requests))); 
                 }
 
                 for (auto& ft : futures) { results.add(time, ft.get()); }
