@@ -7,6 +7,8 @@ add_executable (load_generator
                 Requests.cpp 
                 policies.cpp)
 
-target_link_libraries (load_generator boost_system pthread)
+target_link_libraries (load_generator 
+                    boost_system 
+                    pthread)
 
 
