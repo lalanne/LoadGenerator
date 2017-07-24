@@ -13,8 +13,6 @@ void Requests::load() {
     string content((istreambuf_iterator<char>(fin)), (istreambuf_iterator<char>()));
 
     content.pop_back();
-    cout << "[" << content << "]" << endl;
-
     requests.push_back(content);
 }
 
