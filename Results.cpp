@@ -5,21 +5,27 @@
 
 using namespace std;
 
-Results::Results(const unsigned int times, const unsigned int parallel_request) : results(times) {}
+Results::Results(const unsigned int times, const unsigned int parallel_request) : results(times), total_time_of_execution(0.0f) {}
 
 
 void Results::add(const unsigned int time, pair<string, double> result) {
     results[time].push_back(result);
 }
 
+void Results::add(const double time) {
+    total_time_of_execution = time;
+}
+
 
 void Results::show() const {
-    cout << "************************************** times[" << results.size() << "] **********************************" << endl;
+    cout << "************************************** times[" << results.size() << "] **********************************\n";
     for (auto& time : results) { 
-        cout << "************************************** results[" << time.size() << "] **********************************" << endl;
+        cout << "************************************** results[" << time.size() << "] **********************************\n";
         for(auto& result : time) {
-            cout << "result[" << get<0>(result) << "] latency[" << get<1>(result) << "]" << endl; 
+            cout << "result[" << get<0>(result) << "] latency[" << get<1>(result) << "]\n"; 
         }
     }
+
+    cout << "total time of execution [" << total_time_of_execution << "]s \n";
 }
 

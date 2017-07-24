@@ -6,6 +6,7 @@
 #include "Requests.hpp"
 
 #include <future>
+#include <chrono>
 #include <utility>
 #include <vector>
 #include <string>
@@ -25,6 +26,7 @@ int main(int argc, char *argv[]) {
         requests.load();
 
         try {
+            auto start = chrono::steady_clock::now();
             for(int time=0; time<arguments.NUMBER_OF_TIMES; ++time) {
 
                 vector<future<pair<string, double>>> futures;
@@ -35,7 +37,9 @@ int main(int argc, char *argv[]) {
                 for (auto& ft : futures) { results.add(time, ft.get()); }
 
             }
-           
+            auto end = chrono::steady_clock::now();
+            auto diff = end-start;
+            results.add(diff.count());
             results.show();
         }
         catch(std::exception& e){
