@@ -39,7 +39,7 @@ int main(int argc, char *argv[]) {
             }
             auto end = chrono::steady_clock::now();
             auto diff = end-start;
-            results.add(diff.count());
+            results.add(diff);
             results.show();
         }
         catch(std::exception& e){

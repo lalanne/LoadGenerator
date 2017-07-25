@@ -5,13 +5,14 @@
 #include <vector>
 #include <utility>
 #include <string>
+#include <chrono>
 
 class Results {
     public:
         Results(const unsigned int times, const unsigned int parallel_requests);
 
         void add(const unsigned int time, std::pair<std::string, double> result);
-        void add(const double time);
+        void add(std::chrono::duration<double> time);
         void show() const;
 
     private:

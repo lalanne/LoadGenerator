@@ -12,8 +12,8 @@ void Results::add(const unsigned int time, pair<string, double> result) {
     results[time].push_back(result);
 }
 
-void Results::add(const double time) {
-    total_time_of_execution = time;
+void Results::add(chrono::duration<double> time) {
+    total_time_of_execution = time.count();
 }
 
 
