@@ -5,6 +5,8 @@
 #include "Arguments.hpp"
 #include "Requests.hpp"
 
+#include <boost/log/trivial.hpp>
+
 #include <future>
 #include <chrono>
 #include <utility>
