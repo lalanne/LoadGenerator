@@ -22,7 +22,7 @@ void Results::show() const {
     for (auto& time : results) { 
         cout << "************************************** results[" << time.size() << "] **********************************\n";
         for(auto& result : time) {
-            cout << "result[" << get<0>(result) << "] latency[" << get<1>(result) << "]\n"; 
+            cout << "result\t[" << get<0>(result) << "] latency\t[" << get<1>(result) << "]\n"; 
         }
     }
 
