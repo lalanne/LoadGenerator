@@ -4,6 +4,7 @@
 #include <boost/asio.hpp>
 
 #include <chrono>
+#include <iostream>
 
 using namespace std;
 using boost::asio::ip::tcp;
@@ -11,7 +12,7 @@ using boost::asio::ip::tcp;
 const string SERVER_HOST = "127.0.0.1";
 const string SERVER_PORT = "4040";
 
-const int RESPONSE_MAX_LENGTH = 215;
+const int RESPONSE_MAX_LENGTH = 192;
 
 pair<string, double> request_response(const unsigned int index, Requests& requests) {
     auto start = chrono::steady_clock::now();
