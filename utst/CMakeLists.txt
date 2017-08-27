@@ -5,11 +5,13 @@ set(BINARY_NAME utst)
 set(GTEST_DIR "/usr/include/gtest" CACHE STRING "Options: [$ENV{HOME}/gtest")
 set(GMOCK_DIR "/usr/include/gmock" CACHE STRING "Options: [$ENV{HOME}/gmock")
 
+set (CMAKE_CXX_STANDARD 11)
 #link_directories(${GTEST_DIR}/lib)
 #link_directories(${GMOCK_DIR}/lib)
 
 set(SOURCES
     tests.cpp
+    ArgumentsTests.cpp
 )
 
 add_executable(${BINARY_NAME} ${SOURCES})
