@@ -1,22 +1,15 @@
 cmake_minimum_required(VERSION 2.8.12)
 
-set(BINARY_NAME tests)
+set(BINARY_NAME utst)
 
 set(GTEST_DIR "/usr/include/gtest" CACHE STRING "Options: [$ENV{HOME}/gtest")
 set(GMOCK_DIR "/usr/include/gmock" CACHE STRING "Options: [$ENV{HOME}/gmock")
 
-link_directories(${GTEST_DIR}/lib)
-link_directories(${GMOCK_DIR}/lib)
+#link_directories(${GTEST_DIR}/lib)
+#link_directories(${GMOCK_DIR}/lib)
 
 set(SOURCES
     tests.cpp
-    helpers.cpp
-    ResponseTests.cpp
-    ResponseBuilderTests.cpp
-    XmlParserTests.cpp
-    ../Response.cpp
-    ../ResponseBuilder.cpp
-    ../XmlParser.cpp
 )
 
 add_executable(${BINARY_NAME} ${SOURCES})
