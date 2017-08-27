@@ -1,3 +1,6 @@
+
+[![Build Status](https://travis-ci.org/lalanne/LoadGenerator.svg?branch=master)](https://travis-ci.org/lalanne/LoadGenerator)
+
 # LoadGenerator
 Simple load generator
 
