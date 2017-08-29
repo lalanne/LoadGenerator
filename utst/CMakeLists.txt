@@ -12,6 +12,8 @@ set (CMAKE_CXX_STANDARD 11)
 set(SOURCES
     tests.cpp
     ArgumentsTests.cpp
+    ResultsTests.cpp
+    ../Results.cpp
 )
 
 add_executable(${BINARY_NAME} ${SOURCES})

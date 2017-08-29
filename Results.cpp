@@ -5,7 +5,8 @@
 
 using namespace std;
 
-Results::Results(const unsigned int times, const unsigned int parallel_request) : results(times), total_time_of_execution(0.0f) {}
+Results::Results(const unsigned int times, const unsigned int parallel_request) : 
+                results(times), total_time_of_execution(0.0f) {}
 
 
 void Results::add(const unsigned int time, pair<string, double> result) {
@@ -16,6 +17,13 @@ void Results::add(chrono::duration<double> time) {
     total_time_of_execution = time.count();
 }
 
+unsigned int Results::number() const {
+    return results.size();
+}
+
+double Results::total_time() const {
+    return total_time_of_execution;
+}
 
 void Results::show() const {
     cout << "************************************** times[" << results.size() << "] **********************************\n";

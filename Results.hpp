@@ -14,6 +14,8 @@ class Results {
         void add(const unsigned int time, std::pair<std::string, double> result);
         void add(std::chrono::duration<double> time);
         void show() const;
+        unsigned int number() const;
+        double total_time() const;
 
     private:
         std::vector<std::vector<std::pair<std::string, double>>> results;
