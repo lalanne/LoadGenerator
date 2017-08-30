@@ -15,6 +15,7 @@ class Results {
         void add(std::chrono::duration<double> time);
         void show() const;
         unsigned int number() const;
+        unsigned int parallel(const unsigned int execution) const;
         double total_time() const;
 
     private:

@@ -21,16 +21,20 @@ unsigned int Results::number() const {
     return results.size();
 }
 
+unsigned int Results::parallel(const unsigned int execution) const {
+    return results[execution].size();
+}
+
 double Results::total_time() const {
     return total_time_of_execution;
 }
 
 void Results::show() const {
-    cout << "************************************** times[" << results.size() << "] **********************************\n";
+    cout << "*********************** times[" << results.size() << "] ***************************\n";
     for (auto& time : results) { 
-        cout << "************************************** results[" << time.size() << "] **********************************\n";
+        cout << "************************** results[" << time.size() << "] *********************\n";
         for(auto& result : time) {
-            cout << "result\t[" << get<0>(result) << "] latency\t[" << get<1>(result) << "]\n"; 
+            cout << "result\t[" << get<0>(result) << "] latency\t[" << get<1>(result) << "]\n";
         }
     }
 
