@@ -29,10 +29,10 @@ int main(int argc, char *argv[]) {
 
         try {
             auto start = chrono::steady_clock::now();
-            for(int time=0; time<arguments.NUMBER_OF_TIMES; ++time) {
+            for(unsigned int time=0; time<arguments.NUMBER_OF_TIMES; ++time) {
 
                 vector<future<pair<string, double>>> futures;
-                for(int j=0; j<arguments.NUMBER_OF_REQUESTS_IN_PARALLEL; ++j) { 
+                for(unsigned int j=0; j<arguments.NUMBER_OF_REQUESTS_IN_PARALLEL; ++j) { 
                     futures.push_back(async(launch::async, request_response, j, std::ref(requests))); 
                 }
 

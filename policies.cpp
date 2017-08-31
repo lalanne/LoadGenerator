@@ -26,7 +26,7 @@ pair<string, double> request_response(const unsigned int index, Requests& reques
     boost::asio::write(s, boost::asio::buffer(requests.request(), requests.request().size()));
 
     char response[RESPONSE_MAX_LENGTH];
-    size_t response_length = boost::asio::read(s, boost::asio::buffer(response, RESPONSE_MAX_LENGTH));
+    boost::asio::read(s, boost::asio::buffer(response, RESPONSE_MAX_LENGTH));
 
     auto end = chrono::steady_clock::now();
     auto diff = end-start;
