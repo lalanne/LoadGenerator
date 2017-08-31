@@ -21,6 +21,7 @@ set(SOURCES
     ArgumentsTests.cpp
     ResultsTests.cpp
     ../Results.cpp
+    ../Requests.cpp
 )
 
 add_executable(${BINARY_NAME} ${SOURCES})
