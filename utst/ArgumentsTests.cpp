@@ -41,7 +41,7 @@ TEST(ArgumentsTests, save) {
     const int EXPECTED_NUMBER_OF_TIMES = 100;
     const int EXPECTED_NUMBER_OF_REQUESTS_IN_PARALLEL = 10;
     
-    char* c[] = { "loadGenerator", "10", "100", "file.dat" };
+    char * c[] = { (char*)"loadGenerator", (char*)"10", (char*)"100", (char*)"file.dat" };
 
     Arguments args(INCORRECT_NUMBER_OF_ARGUMENTS, c);
     args.save();
