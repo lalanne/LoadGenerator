@@ -34,8 +34,4 @@ target_link_libraries(${BINARY_NAME} gtest )
 target_link_libraries(${BINARY_NAME} gmock)
 target_link_libraries(${BINARY_NAME} gcov)
 
-add_test(NAME example_test COMMAND ./utst)
-
-include(CTest)
-enable_testing()
 
