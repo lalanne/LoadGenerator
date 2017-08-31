@@ -22,6 +22,7 @@ set(SOURCES
     ResultsTests.cpp
     ../Results.cpp
     ../Requests.cpp
+    ../policies.cpp
 )
 
 add_executable(${BINARY_NAME} ${SOURCES})
@@ -34,5 +35,7 @@ include_directories(${GMOCK_DIR}/include)
 target_link_libraries(${BINARY_NAME} gtest )
 target_link_libraries(${BINARY_NAME} gmock)
 target_link_libraries(${BINARY_NAME} gcov)
+target_link_libraries(${BINARY_NAME} boost_system)
+target_link_libraries(${BINARY_NAME} pthread)
 
 
