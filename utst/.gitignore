@@ -1,2 +1,7 @@
 utst
 tests
+CTestTestfile.cmake
+Testing/
+DartConfiguration.tcl
+utst.dSYM/
+coverage.info
