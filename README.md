@@ -1,5 +1,6 @@
 
 [![Build Status](https://travis-ci.org/lalanne/LoadGenerator.svg?branch=develop)](https://travis-ci.org/lalanne/LoadGenerator)
+[![codecov](https://codecov.io/gh/lalanne/LoadGenerator/branch/develop/graph/badge.svg)](https://codecov.io/gh/lalanne/LoadGenerator)
 
 # LoadGenerator
 Simple load generator
