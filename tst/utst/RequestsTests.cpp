@@ -19,7 +19,7 @@ const string EXPECTED_BASIC_REQUEST = "<?xml version=\"1.0\" encoding=\"ISO-8859
 
 TEST(RequestsTests, basic_request) {
     
-    Requests requests("../test1.dat");
+    Requests requests("test1.dat");
     requests.load();
 
     string request = requests.request();
