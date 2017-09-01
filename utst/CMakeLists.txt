@@ -20,6 +20,7 @@ set(SOURCES
     tests.cpp
     ArgumentsTests.cpp
     ResultsTests.cpp
+    RequestsTests.cpp
     ../Results.cpp
     ../Requests.cpp
     ../policies.cpp
