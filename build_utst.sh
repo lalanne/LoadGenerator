@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-cd utst/
+cd tst/utst/
 cmake .
 make clean
 make
