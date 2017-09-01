@@ -20,7 +20,7 @@ before_install:
     - cd "${TRAVIS_BUILD_DIR}"
 
 script:
-    - ./build_utst.sh
+    - ./build.sh
 
 after_success:
 # Creating report
