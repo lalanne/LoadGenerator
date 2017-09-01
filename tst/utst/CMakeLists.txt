@@ -7,7 +7,7 @@ set(GMOCK_DIR "/usr/include/gmock" CACHE STRING "Options: [$ENV{HOME}/gmock")
 
 set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/CMakeModules)
 set (CMAKE_CXX_STANDARD 11)
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -pedantic -pthread -g -O0 -fprofile-arcs -ftest-coverage")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -pedantic -g -O0 -fprofile-arcs -ftest-coverage")
 #link_directories(${GTEST_DIR}/lib)
 #link_directories(${GMOCK_DIR}/lib)
 if(CMAKE_COMPILER_IS_GNUCXX)
@@ -21,14 +21,14 @@ set(SOURCES
     ArgumentsTests.cpp
     ResultsTests.cpp
     RequestsTests.cpp
-    ../Results.cpp
-    ../Requests.cpp
-    ../policies.cpp
+    ../../Results.cpp
+    ../../Requests.cpp
+    ../../policies.cpp
 )
 
 add_executable(${BINARY_NAME} ${SOURCES})
 
-include_directories(../)
+include_directories(../../)
 
 include_directories(${GTEST_DIR}/include)
 include_directories(${GMOCK_DIR}/include)
@@ -37,6 +37,5 @@ target_link_libraries(${BINARY_NAME} gtest )
 target_link_libraries(${BINARY_NAME} gmock)
 target_link_libraries(${BINARY_NAME} gcov)
 target_link_libraries(${BINARY_NAME} boost_system)
-target_link_libraries(${BINARY_NAME} pthread)
 
 
