@@ -24,11 +24,14 @@ script:
 
 after_success:
 # Creating report
-    - cd ${TRAVIS_BUILD_DIR}/tst/itst
+    - cd ${TRAVIS_BUILD_DIR}/tst/
     - echo `pwd`
-    - lcov --directory . --capture --output-file coverage.info # capture coverage info
-    - lcov --remove coverage.info '/usr/*' --output-file coverage.info # filter out system
-    - lcov --list coverage.info #debug info
+    - lcov --directory itst/ --capture --output-file coverage_itst.info # capture coverage info
+    - lcov --directory utst/ --capture --output-file coverage_utst.info # capture coverage info
+    - lcov --remove coverage_itst.info '/usr/*' --output-file coverage_itst.info # filter out system
+    - lcov --remove coverage_utst.info '/usr/*' --output-file coverage_utst.info # filter out system
+    - lcov --list coverage_itst.info #debug info
+    - lcov --list coverage_utst.info #debug info
     # Uploading report to CodeCov
     - bash <(curl -s https://codecov.io/bash) -t c129d72a-3721-47cb-98e9-2b95cc643ea0 || echo "Codecov did not collect coverage reports"
 
