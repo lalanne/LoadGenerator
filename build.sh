@@ -16,7 +16,12 @@ if [ "$ret" != "0" ]; then
 	exit 1
 fi
 
-utst/utst
-itst/itst
+cd utst/
+./utst
+cd -
+
+cd itst/
+./itst
+cd -
 
 
