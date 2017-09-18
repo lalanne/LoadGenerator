@@ -30,8 +30,8 @@ after_success:
     - lcov --directory utst/ --capture --output-file coverage_utst.info # capture coverage info
     - lcov --remove coverage_itst.info '/usr/*' --output-file coverage_itst.info # filter out system
     - lcov --remove coverage_utst.info '/usr/*' --output-file coverage_utst.info # filter out system
-    - lcov --list coverage_itst.info #debug info
-    - lcov --list coverage_utst.info #debug info
+    - lcov --add-tracefile coverage_itst.info --add-tracefile coverage_utst.info --output-file coverage_total.info #combining tracefiles
+    - lcov --list coverage_total.info #debug info
     # Uploading report to CodeCov
     - bash <(curl -s https://codecov.io/bash) -t c129d72a-3721-47cb-98e9-2b95cc643ea0 || echo "Codecov did not collect coverage reports"
 
