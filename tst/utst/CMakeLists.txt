@@ -24,5 +24,6 @@ target_link_libraries(${BINARY_NAME_UTST} gtest )
 target_link_libraries(${BINARY_NAME_UTST} gmock)
 target_link_libraries(${BINARY_NAME_UTST} gcov)
 target_link_libraries(${BINARY_NAME_UTST} boost_system)
+target_link_libraries(${BINARY_NAME_UTST} pthread)
 
 
