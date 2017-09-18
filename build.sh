@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-cd tst/utst/
+cd tst/
 cmake .
 ret=$?
 if [ "$ret" != "0" ]; then
@@ -10,17 +10,13 @@ fi
 
 make clean
 make
-./utst
-cd -
-
-cd tst/itst/
-cmake .
 ret=$?
 if [ "$ret" != "0" ]; then
-    echo "ERROR: cmake integration tests!!!!"
+    echo "ERROR: compilation!!!!"
 	exit 1
 fi
-make clean
-make
-./itst
-cd -
+
+utst/utst
+itst/itst
+
+
