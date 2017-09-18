@@ -18,11 +18,6 @@ set(SOURCES
 
 add_executable(${BINARY_NAME} ${SOURCES})
 
-include_directories(../../)
-
-include_directories(${GTEST_DIR}/include)
-include_directories(${GMOCK_DIR}/include)
-
 target_link_libraries(${BINARY_NAME} gtest )
 target_link_libraries(${BINARY_NAME} gmock)
 target_link_libraries(${BINARY_NAME} gcov)
