@@ -6,6 +6,6 @@ lcov --remove coverage_itst.info '/usr/*' --output-file coverage_itst.info # fil
 lcov --remove coverage_itst.info 'tst/itst/*' --output-file coverage_itst.info # filter out system
 lcov --remove coverage_utst.info '/usr/*' --output-file coverage_utst.info # filter out system
 lcov --remove coverage_utst.info 'tst/utst/*' --output-file coverage_utst.info # filter out system
-lcov --list coverage_itst.info #debug info
-lcov --list coverage_utst.info #debug info
+lcov --add-tracefile coverage_itst.info --add-tracefile coverage_utst.info --output-file coverage_total.info #combining tracefiles
+lcov --list coverage_total.info #debug info
 
