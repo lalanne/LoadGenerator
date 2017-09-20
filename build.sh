@@ -26,4 +26,9 @@ cd -
 
 cd ftst
 pytest -v
+ret=$?
+if [ "$ret" != "0" ]; then
+    echo "ERROR: functional tests fail!!!!"
+	exit 1
+fi
 cd -
