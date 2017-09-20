@@ -6,3 +6,4 @@ CMakeFiles/
 *.dat
 *.gcov
 load_generator.dSYM/
+.cache
