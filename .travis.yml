@@ -18,7 +18,7 @@ before_install:
     - sudo make install
     - sudo apt-get install libboost-all-dev
     - sudo apt-get -y install python-pip
-    - pip install -U pytest
+    - sudo pip install -U pytest
     - cd "${TRAVIS_BUILD_DIR}"
 
 script:
