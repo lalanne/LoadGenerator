@@ -24,6 +24,21 @@ cd itst/
 ./itst
 cd -
 
+cd ../
+cmake .
+ret=$?
+if [ "$ret" != "0" ]; then
+    echo "ERROR: cmake of load generator!!!!"
+	exit 1
+fi
+make clean
+make
+if [ "$ret" != "0" ]; then
+    echo "ERROR: compilation of load generator!!!!"
+	exit 1
+fi
+cd -
+
 cd ftst
 pytest -v
 ret=$?
