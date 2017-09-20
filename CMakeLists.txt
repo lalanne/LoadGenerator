@@ -3,6 +3,7 @@ project (LoadGenerator)
 
 set(CMAKE_CXX_FLAGS_DEBUG "-Wall -pedantic -g -ggdb -O0")
 set(CMAKE_CXX_FLAGS_RELEASE "-Wall -pedantic -O3")
+set (CMAKE_CXX_STANDARD 11)
 
 if(NOT CMAKE_BUILD_TYPE) 
     set(CMAKE_BUILD_TYPE Release)
