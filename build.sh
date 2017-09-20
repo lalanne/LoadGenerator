@@ -24,4 +24,6 @@ cd itst/
 ./itst
 cd -
 
-
+cd ftst
+pytest -v
+cd -
