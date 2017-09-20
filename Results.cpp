@@ -30,11 +30,11 @@ double Results::total_time() const {
 }
 
 void Results::show() const {
-    cout << "*********************** times[" << results.size() << "] ***************************\n";
+    cout << "times[" << results.size() << "]\n";
     for (auto& time : results) { 
-        cout << "************************** results[" << time.size() << "] *********************\n";
+        cout << "results[" << time.size() << "]\n";
         for(auto& result : time) {
-            cout << "result\t[" << get<0>(result) << "] latency\t[" << get<1>(result) << "]\n";
+            cout << "result" << " " << "[" << " " << get<0>(result) << " " << "]" << " " << "latency" << " " << "[" << " " <<get<1>(result) << " " << "]\n";
         }
     }
 

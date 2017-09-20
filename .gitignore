@@ -6,3 +6,6 @@ CMakeFiles/
 *.dat
 *.gcov
 load_generator.dSYM/
+.cache
+*.info
+__pycache__
