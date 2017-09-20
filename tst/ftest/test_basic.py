@@ -12,7 +12,11 @@ def test_no_server_up_1_1():
     split_output = output.split('\n')
     result_split = split_output[2].split(' ')
 
-    assert result_split[2] == 'connection'
-    assert result_split[3] == 'fails'
-    assert result_split[5] == 'latency'
-    assert result_split[7] == '0'
+    expected_result = 'connection fails'
+    actual_result = result_split[2] + ' ' + result_split[3]
+
+    expected_latency = '0'
+    actual_latency = result_split[7]
+
+    assert actual_result == expected_result
+    assert actual_latency == expected_latency
