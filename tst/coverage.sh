@@ -6,8 +6,10 @@ lcov --add-tracefile coverage_itst.info --add-tracefile coverage_utst.info --out
 lcov --remove coverage_total.info '/usr/*' --output-file coverage_total.info # filter out system
 path=`pwd`
 utst_path=${path}/utst/*
+utst_path1=${path}/utst/RequestsTests.cpp
 itst_path=${path}/itst/*
 lcov --remove coverage_total.info $utst_path --output-file coverage_total.info # filter out system
+lcov --remove coverage_total.info $utst_path1 --output-file coverage_total.info # filter out system
 lcov --remove coverage_total.info $itst_path --output-file coverage_total.info # filter out system
 lcov --list coverage_total.info #debug info
 
