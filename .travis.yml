@@ -10,7 +10,7 @@ addons:
             - lcov
 
 before_install:
-    - ./install_dependencies.sh
+    - sudo ./install_dependencies.sh
 
 script:
     - ./build.sh
