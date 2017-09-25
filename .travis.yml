@@ -9,7 +9,7 @@ addons:
         packages:
             - lcov
 
-install:
+before_install:
     - ./install_dependencies.sh
 
 script:
