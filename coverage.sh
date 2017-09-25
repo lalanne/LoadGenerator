@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -e
+
 cd ${TRAVIS_BUILD_DIR}/tst/
 lcov --directory itst/ --capture --output-file coverage_itst.info # capture coverage info
 lcov --directory utst/ --capture --output-file coverage_utst.info # capture coverage info
